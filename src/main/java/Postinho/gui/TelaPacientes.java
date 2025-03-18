@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Cabelereiro.gui;
+package Postinho.gui;
 
 import ConexaoBD.Conexao;
-import Cabelereiro.DAO.ClientesDAO;
-import Cabelereiro.DTO.ClientesDTO;
+import Postinho.DAO.PacientesDAO;
+import Postinho.DTO.PacientesDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,20 +18,20 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author luizg
+ * @author emellyv
  */
-public class TelaClientes extends javax.swing.JFrame {
+public class TelaPacientes extends javax.swing.JFrame {
 
 
 /**
-     * Creates new form Clientes
+     * Creates new form Pacientes
      */
-    public TelaClientes() {
+    public TelaPacientes() {
     initComponents();
     try {
         Connection conexao = new Conexao().getConnection(); // Obtendo conexão
-        new ClientesDAO(conexao); // Passando a conexão para o DAO
-        listarClientes(); // Chamando o método para listar os clientes
+        new PacientesDAO(conexao); // Passando a conexão para o DAO
+        listarPacientes(); // Chamando o método para listar os pacientes
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Erro ao conectar ao banco: " + e.getMessage());
     }
@@ -54,11 +54,11 @@ public class TelaClientes extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtHorarioDeAtendimento = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtCpf = new javax.swing.JTextField();
+        txtSUS = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblClientes = new javax.swing.JTable();
+        tblPacientes = new javax.swing.JTable();
         CadastrarButton = new javax.swing.JButton();
         AtualizarButton = new javax.swing.JButton();
         ExcluirButton = new javax.swing.JButton();
@@ -67,11 +67,11 @@ public class TelaClientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 51, 0));
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
-        jPanel1.setForeground(new java.awt.Color(255, 102, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setForeground(new java.awt.Color(153, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 3, 48)); // NOI18N
-        jLabel1.setText("Clientes");
+        jLabel1.setText("Pacientes");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Nome");
@@ -86,12 +86,12 @@ public class TelaClientes extends javax.swing.JFrame {
         jLabel4.setText("Horario de Atendimento");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("CPF");
+        jLabel5.setText("SUS");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Telefone");
 
-        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -102,13 +102,13 @@ public class TelaClientes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblClientes.setModel(new DefaultTableModel(     new Object[][]{},      new String[]{"Nome", "CPF", "horarioAtendimento", "Telefone"} ));
-        tblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblPacientes.setModel(new DefaultTableModel(     new Object[][]{},      new String[]{"Nome", "CPF", "horarioAtendimento", "Telefone"} ));
+        tblPacientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblClientesMouseClicked(evt);
+                tblPacientesMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblClientes);
+        jScrollPane1.setViewportView(tblPacientes);
 
         CadastrarButton.setText("Cadastrar");
         CadastrarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +161,7 @@ public class TelaClientes extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCpf)
+                                    .addComponent(txtSUS)
                                     .addComponent(txtTelefone)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(109, 109, 109)
@@ -179,7 +179,7 @@ public class TelaClientes extends javax.swing.JFrame {
                                 .addComponent(ExcluirButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(CarregarButton))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,7 +198,7 @@ public class TelaClientes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSUS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefone)
@@ -235,19 +235,19 @@ public class TelaClientes extends javax.swing.JFrame {
 
     private void AtualizarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarButtonActionPerformed
       try {
-          atualizarClientes();
+          atualizarPaciente();
       } catch (SQLException ex) {
-          Logger.getLogger(TelaClientes.class.getName()).log(Level.SEVERE, null, ex);
+          Logger.getLogger(TelaPacientes.class.getName()).log(Level.SEVERE, null, ex);
       }
-        listarClientes();
-        limparCamposClientes();
+        listarPacientes();
+        limparCamposPacientes();
     }//GEN-LAST:event_AtualizarButtonActionPerformed
 
     private void ExcluirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirButtonActionPerformed
 
-        excluirClientes();
-        listarClientes();
-        limparCamposClientes();
+        excluirPacientes();
+        listarPacientes();
+        limparCamposPacientes();
     }//GEN-LAST:event_ExcluirButtonActionPerformed
 
     private void CarregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarregarButtonActionPerformed
@@ -255,18 +255,18 @@ public class TelaClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_CarregarButtonActionPerformed
 
     private void CadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarButtonActionPerformed
-        cadastrarClientes();
+        cadastrarPaciente();
     }//GEN-LAST:event_CadastrarButtonActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void tblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClientesMouseClicked
-          int selectedRow = tblClientes.getSelectedRow();
+    private void tblPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPacientesMouseClicked
+          int selectedRow = tblPacientes.getSelectedRow();
     System.out.println("📌 Linha clicada: " + selectedRow);
 
-    }//GEN-LAST:event_tblClientesMouseClicked
+    }//GEN-LAST:event_tblPacientesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -285,14 +285,18 @@ public class TelaClientes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -301,7 +305,7 @@ public class TelaClientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaClientes().setVisible(true);
+                new TelaPacientes().setVisible(true);
             }
         });
     }
@@ -318,50 +322,50 @@ public class TelaClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblClientes;
-    private javax.swing.JTextField txtCpf;
+    private javax.swing.JTable tblPacientes;
     private javax.swing.JTextField txtHorarioDeAtendimento;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSUS;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
-private void cadastrarClientes() {
+private void cadastrarPaciente() {
     // Capturando os dados do textField
     String nome = txtNome.getText();
-    String cpf = txtCpf.getText().trim();
+    String SUS = txtSUS.getText().trim();
     String telefone = txtTelefone.getText().trim();
     String horarioAtendimento = txtHorarioDeAtendimento.getText().trim();
 
-    if (cpf.isEmpty() || telefone.isEmpty() || nome.isEmpty()) {
+    if (SUS.isEmpty() || telefone.isEmpty() || nome.isEmpty()) {
         JOptionPane.showMessageDialog(null, "❌ Preencha todos os campos obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
     try {
-        // Criando o objeto ClientesDTO
-        ClientesDTO novoCliente = new ClientesDTO(nome, cpf, horarioAtendimento, telefone);
+        // Criando o objeto Paciente DTO
+        PacientesDTO novoPaciente = new PacientesDTO(nome, SUS, horarioAtendimento, telefone);
         
-        System.out.println("Dados capturados do formulario: " + novoCliente.toString());
+        System.out.println("Dados capturados do formulario: " + novoPaciente.toString());
 
-        // Query SQL para inserir o hóspede
-        String query = "INSERT INTO clientes (nome, cpf, telefone, horarioAtendimento) VALUES (?, ?, ?, ?)";
+        // Query SQL para inserir o Paciente
+        String query = "INSERT INTO paciente (nome, SUS, telefone, horarioAtendimento) VALUES (?, ?, ?, ?)";
 
         // Executa o comando SQL usando o método da classe Conexao
-        boolean sucesso = Conexao.executarComandoSQL(query, nome, cpf, telefone, horarioAtendimento);
+        boolean sucesso = Conexao.executarComandoSQL(query, nome, SUS, telefone, horarioAtendimento);
 
         if (sucesso) {
-            JOptionPane.showMessageDialog(null, "Hóspede cadastrado com sucesso.");
-            listarClientes(); // Atualiza a tabela
-            limparCamposCliente();
+            JOptionPane.showMessageDialog(null, "Paciente cadastrado com sucesso.");
+            listarPacientes(); // Atualiza a tabela
+            limparCamposPaciente();
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar clientes.", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar Paciente.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Erro ao cadastrar clientes: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Erro ao cadastrar paciente: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
     }
 }
 
-private void atualizarClientes() throws SQLException {
-    int selectedRow = tblClientes.getSelectedRow(); // 🔹 Obtém a linha selecionada
+private void atualizarPaciente() throws SQLException {
+    int selectedRow = tblPacientes.getSelectedRow(); // 🔹 Obtém a linha selecionada
     System.out.println("📌 Tentando atualizar... Linha selecionada: " + selectedRow);
 
     if (selectedRow == -1) {  // Se nenhuma linha estiver selecionada, exibe erro
@@ -369,155 +373,155 @@ private void atualizarClientes() throws SQLException {
         return;
     }
 
-    // Obtém o CPF do cliente selecionado
-    String cpfClienteSelecionado = (String) tblClientes.getValueAt(selectedRow, 1); // Coluna 1 = CPF
-    System.out.println("📌 CPF do cliente selecionado: " + cpfClienteSelecionado);
+    // Obtém o SUS do paciente selecionado
+    String SUSPacienteSelecionado = (String) tblPacientes.getValueAt(selectedRow, 1); // Coluna 1 = CPF
+    System.out.println("📌 SUS do paciente selecionado: " + SUSPacienteSelecionado);
 
-    if (cpfClienteSelecionado.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "CPF do cliente inválido.", "Erro", JOptionPane.ERROR_MESSAGE);
+    if (SUSPacienteSelecionado.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "SUS do paciente inválido.", "Erro", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
     // Obtém os dados dos campos
     String nome = txtNome.getText();
-    String cpf = txtCpf.getText();
+    String SUS  = txtSUS.getText();
     String telefone = txtTelefone.getText();
     String horarioAtendimento = txtHorarioDeAtendimento.getText();
 
-    if (nome.isEmpty() || cpf.isEmpty() || telefone.isEmpty() || horarioAtendimento.isEmpty()) {
+    if (nome.isEmpty() || SUS.isEmpty() || telefone.isEmpty() || horarioAtendimento.isEmpty()) {
         JOptionPane.showMessageDialog(null, "❌ Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
-    // SQL para atualizar o cliente
-    String query = "UPDATE clientes SET nome = ?, cpf = ?, telefone = ?, horarioAtendimento = ? WHERE cpf = ?";
+    // SQL para atualizar o Paciente
+    String query = "UPDATE pacientes SET nome = ?, SUS = ?, telefone = ?, horarioAtendimento = ? WHERE SUS = ?";
 
 
-    boolean sucesso = Conexao.executarComandoSQL(query, nome, cpf, telefone, horarioAtendimento, cpfClienteSelecionado);
+    boolean sucesso = Conexao.executarComandoSQL(query, nome, SUS, telefone, horarioAtendimento, SUSPacienteSelecionado);
 
     if (sucesso) {
-        JOptionPane.showMessageDialog(null, "✅ Cliente atualizado com sucesso.");
-        listarClientes();  // Atualiza a tabela
+        JOptionPane.showMessageDialog(null, "✅ Paciente atualizado com sucesso.");
+        listarPacientes();  // Atualiza a tabela
     } else {
-        JOptionPane.showMessageDialog(null, "❌ Erro ao atualizar o cliente.", "Erro", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "❌ Erro ao atualizar o paciente.", "Erro", JOptionPane.ERROR_MESSAGE);
     }
 }
 
-private void excluirCliente() {
-    int selectedRow = tblClientes.getSelectedRow(); // Obtém a linha selecionada
+private void excluirPacientes() {
+    int selectedRow = tblPacientes.getSelectedRow(); // Obtém a linha selecionada
 
-    if (selectedRow == -1) {  // Verifica se um cliente foi selecionado
-        JOptionPane.showMessageDialog(null, "Selecione um cliente para excluir.", "Erro", JOptionPane.ERROR_MESSAGE);
+    if (selectedRow == -1) {  // Verifica se um paciente foi selecionado
+        JOptionPane.showMessageDialog(null, "Selecione um paciente para excluir.", "Erro", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
-    // Obtém o CPF do hóspede selecionado
-    String cpfClienteSelecionado = (String) tblClientes.getValueAt(selectedRow, 1); // Coluna 1 = CPF
-    System.out.println("CPF do cliente a excluir: " + cpfClienteSelecionado);  // 🔥 Debug
+    // Obtém o Sus do paciente selecionado
+    String SUSPacientesSelecionado = (String) tblPacientes.getValueAt(selectedRow, 1); // Coluna 1 = SUS
+    System.out.println("SUS do pacientes a excluir: " + SUSPacientesSelecionado);  // 🔥 Debug
 
-    String query = "DELETE FROM clientes WHERE cpf = ?";
+    String query = "DELETE FROM pacientes WHERE SUS = ?";
 
     // Chama o método do ConexaoDAO para executar a exclusão
-    boolean sucesso = Conexao.executarComandoSQL(query, cpfClienteSelecionado);
+    boolean sucesso = Conexao.executarComandoSQL(query, SUSPacientesSelecionado);
 
     if (sucesso) {
-        JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso.");
-        listarClientes();  // Atualiza a lista de clientes
+        JOptionPane.showMessageDialog(null, "Paciente excluído com sucesso.");
+        listarPacientes();  // Atualiza a lista de paciente
     } else {
-        JOptionPane.showMessageDialog(null, "Erro ao excluir o cliente.", "Erro", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Erro ao excluir o paciente.", "Erro", JOptionPane.ERROR_MESSAGE);
     }
 }
 
-private void listarClientes() {
+private void listarPacientes() {
     try {
-        String query = "SELECT * FROM clientes";
+        String query = "SELECT * FROM pacientes";
         
         // Usando a classe Conexao para obter a conexão
         try (Connection conn = new Conexao().getConnection(); // Obtém a conexão
              PreparedStatement pst = conn.prepareStatement(query);
              ResultSet rs = pst.executeQuery()) {
 
-            DefaultTableModel model = (DefaultTableModel) tblClientes.getModel();
+            DefaultTableModel model = (DefaultTableModel) tblPacientes.getModel();
             model.setNumRows(0); // Limpa a tabela antes de adicionar novos dados
 
             while (rs.next()) {
                 Object[] rowData = {
                     rs.getString("nome"),
-                    rs.getString("cpf"),
+                    rs.getString("SUS"),
                     rs.getString("horarioAtendimento"),
                     rs.getString("telefone"),
                 };
                 model.addRow(rowData);
             }
-            tblClientes.repaint(); // Atualiza a tabela
-            tblClientes.revalidate();
+            tblPacientes.repaint(); // Atualiza a tabela
+            tblPacientes.revalidate();
         }
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Erro ao carregar os clientes: " + e.getMessage());
+        JOptionPane.showMessageDialog(null, "Erro ao carregar os pacientes: " + e.getMessage());
     }
 }
 
 private void carregarCampos() {
-    int selectedRow = tblClientes.getSelectedRow();
+    int selectedRow = tblPacientes.getSelectedRow();
     if (selectedRow != -1) {
-        txtNome.setText(tblClientes.getValueAt(selectedRow, 0).toString());
-        txtCpf.setText(tblClientes.getValueAt(selectedRow, 1).toString());
-        txtHorarioDeAtendimento.setText(tblClientes.getValueAt(selectedRow, 2).toString());
-        txtTelefone.setText(tblClientes.getValueAt(selectedRow, 3).toString());
+        txtNome.setText(tblPacientes.getValueAt(selectedRow, 0).toString());
+        txtSUS.setText(tblPacientes.getValueAt(selectedRow, 1).toString());
+        txtHorarioDeAtendimento.setText(tblPacientes.getValueAt(selectedRow, 2).toString());
+        txtTelefone.setText(tblPacientes.getValueAt(selectedRow, 3).toString());
         
         
     } else {
-        System.out.println("Nenhum cliente selecionado.");
+        System.out.println("Nenhum pacientes selecionado.");
     }
 }
 
-private void limparCamposCliente() {
+private void limparCamposPacientes() {
     txtNome.setText(null);
-    txtCpf.setText(null);
+    txtSUS.setText(null);
     txtHorarioDeAtendimento.setText(null);
     txtTelefone.setText(null);
     txtNome.requestFocus();  
 } 
 
-    private void limparCamposClientes() {
+    private void limparCamposPaciente() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-private void excluirClientes() {
-    int selectedRow = tblClientes.getSelectedRow(); // Obtém a linha selecionada na tabela
+private void excluirPaciente() {
+    int selectedRow = tblPacientes.getSelectedRow(); // Obtém a linha selecionada na tabela
 
     if (selectedRow == -1) { // Verifica se uma linha foi selecionada
-        JOptionPane.showMessageDialog(null, "❌ Nenhum cliente foi selecionado!", "Erro", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "❌ Nenhum paciente foi selecionado!", "Erro", JOptionPane.ERROR_MESSAGE);
         return;
     }
 
-    // Obtém o CPF do cliente selecionado (assumindo que o CPF está na segunda coluna)
-    String cpfClienteSelecionado = (String) tblClientes.getValueAt(selectedRow, 1);
+    // Obtém o SUS do paciente selecionado (assumindo que o SUS está na segunda coluna)
+    String SUSPacienteSelecionado = (String) tblPacientes.getValueAt(selectedRow, 1);
 
     // Confirmação antes de excluir
     int confirmacao = JOptionPane.showConfirmDialog(
         null,
-        "Tem certeza que deseja excluir o cliente com CPF " + cpfClienteSelecionado + "?",
+        "Tem certeza que deseja excluir o cliente com SUS " + SUSPacienteSelecionado + "?",
         "Confirmar Exclusão",
         JOptionPane.YES_NO_OPTION
     );
 
     if (confirmacao == JOptionPane.YES_OPTION) {
         try {
-            // Query SQL para excluir o cliente
-            String query = "DELETE FROM Clientes WHERE cpf = ?";
+            // Query SQL para excluir o paciente
+            String query = "DELETE FROM Paciente WHERE SUS = ?";
 
             // Executa o comando SQL usando a classe Conexao
-            boolean sucesso = Conexao.executarComandoSQL(query, cpfClienteSelecionado);
+            boolean sucesso = Conexao.executarComandoSQL(query, SUSPacienteSelecionado);
 
             if (sucesso) {
-                JOptionPane.showMessageDialog(null, "✅ Cliente excluído com sucesso.");
-                listarClientes(); // Atualiza a tabela após a exclusão
+                JOptionPane.showMessageDialog(null, "✅ Paciente excluído com sucesso.");
+                listarPacientes(); // Atualiza a tabela após a exclusão
             } else {
-                JOptionPane.showMessageDialog(null, "❌ Erro ao excluir o cliente.", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "❌ Erro ao excluir o paciente.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir o cliente: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao excluir o paciente: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 } }

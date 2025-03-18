@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author luizg
+ * @author emellyv
  */
 public class testeConexao {
     public static void main(String[] args) throws SQLException {

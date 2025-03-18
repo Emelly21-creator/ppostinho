@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Cabelereiro.DAO;
+package Postinho.DAO;
 
 import ConexaoBD.Conexao;
-import Cabelereiro.DTO.UsuarioDTO;
+import Postinho.DTO.UsuarioDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

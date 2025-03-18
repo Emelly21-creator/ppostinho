@@ -2,24 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Cabelereiro.DTO;
+package Postinho.DTO;
 
 /**
  *
- * @author luizg
+ * @author emellyv
  */
-public class ClientesDTO {
+public class PacientesDTO {
 
     private int id;
     private String nome;
-    private String cpf;
+    private String SUS;
     private String horaAtendimento;
     private String telefone;
     
 
-    public ClientesDTO( String nome, String cpf, String horaAtendimento, String telefone) {
+    public PacientesDTO( String nome, String SUS, String horaAtendimento, String telefone) {
         this.nome = nome;
-        this.cpf = cpf;
+        this.SUS = SUS;
         this.horaAtendimento = horaAtendimento;
         this.telefone = telefone;
     }
@@ -40,12 +40,12 @@ public class ClientesDTO {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getSUS() {
+        return SUS;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setSUS(String SUS) {
+        this.SUS = SUS;
     }
 
     public String setHararioDeAtendimento() {

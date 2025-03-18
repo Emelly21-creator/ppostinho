@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Cabelereiro.gui;
+package Postinho.gui;
 
 import ConexaoBD.Conexao;
-import Cabelereiro.DAO.UsuarioDAO;
-import Cabelereiro.DTO.UsuarioDTO;
-import com.mycompany.pcabelereiro.LoginController;
+import Postinho.DAO.UsuarioDAO;
+import Postinho.DTO.UsuarioDTO;
+import com.mycompany.ppostinho.LoginController;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author luizg
+ * @author emellyv
  */
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -56,10 +56,10 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Perpetua Titling MT", 3, 36)); // NOI18N
-        jLabel1.setText("Cabelereira leila");
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        jLabel1.setText("Postinho - Pedro c. ");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Nome:");
@@ -67,8 +67,8 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Senha:");
 
-        ButtonEntrar.setBackground(new java.awt.Color(255, 51, 153));
-        ButtonEntrar.setFont(new java.awt.Font("Segoe UI Emoji", 3, 18)); // NOI18N
+        ButtonEntrar.setBackground(new java.awt.Color(51, 51, 255));
+        ButtonEntrar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         ButtonEntrar.setText("Entrar");
         ButtonEntrar.setRolloverEnabled(false);
         ButtonEntrar.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -103,11 +103,12 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtSenha)
-                    .addComponent(txtNome)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(txtNome))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -10,9 +10,9 @@ import java.sql.SQLException;
 
 public class Conexao {
     // Configurações do banco de dados
-    private static final String URL = "jdbc:mysql://localhost:3306/cabelereiro";
+    private static final String URL = "jdbc:mysql://localhost:3306/postinho";
     private static final String USUARIO = "root"; // Substitua pelo seu usuário do MySQL
-    private static final String SENHA = "gustavo123"; // Substitua pela sua senha do MySQL
+    private static final String SENHA = "emelly@21"; // Substitua pela sua senha do MySQL
 
     
     public static Connection getConnection() throws SQLException{
